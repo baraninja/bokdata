@@ -34,10 +34,15 @@ cd book-info-fetcher
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file in the project root and add your Perplexity API key:
-```
-PERPLEXITY_API_KEY=your_api_key_here
-```
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Edit `.env` and add your Perplexity API key:
+     ```
+     PERPLEXITY_API_KEY=your-api-key-here
+     ```
 
 ## Input File Format
 
@@ -45,16 +50,20 @@ Create a CSV file named `books.csv` with the following columns:
 - `title`: Book title
 - `year`: Publication year
 
-Example:
+Example file (`example_books.csv` is provided):
 ```csv
 title,year
-"Book Title 1",2020
-"Book Title 2",2021
+"1793",2017
+"1794",2019
+"1795",2021
 ```
 
 ## Usage
 
-1. Prepare your input file `books.csv`
+1. Prepare your input file `books.csv` (or use the provided example_books.csv):
+```bash
+cp example_books.csv books.csv
+```
 
 2. Run the script:
 ```bash
@@ -77,6 +86,20 @@ The script will create a CSV file with entries like:
 ```csv
 title,year,pages,note,url,citations
 "1795",2021,458,"Förlag: Bokförlaget Forum, ISBN: 9789137153728","https://www.bokus.com/bok/9789137153728/1795/","[citation data]"
+```
+
+## Project Structure
+
+```
+book-info-fetcher/
+│
+├── script.py            # Main script
+├── requirements.txt     # Python dependencies
+├── example_books.csv    # Example input file
+├── .env.example        # Example environment variables
+├── .gitignore          # Git ignore rules
+├── LICENSE             # MIT license
+└── README.md           # This file
 ```
 
 ## Rate Limiting
